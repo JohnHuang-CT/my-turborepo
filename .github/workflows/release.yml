@@ -1,7 +1,11 @@
 name: Release
 
 on:
-  workflow_dispatch:  # This allows manual triggering of the workflow
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: true  # This allows manual triggering of the workflow
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
