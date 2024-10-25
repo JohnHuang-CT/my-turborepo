@@ -1,9 +1,7 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:  # This allows manual triggering of the workflow
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -15,25 +13,60 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 20.x
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'pnpm'
 
-      - name: Install Dependencies
-        run: yarn
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Check for Pre.json
+        id: check-pre
+        run: |
+          if [[ "${{ github.event.inputs.branch }}" == "master" ]]; then
+            # For master branch: Check pre.json and exit pre mode if necessary
+            if [ -f "changeset/pre.json" ]; then
+              mode=$(jq -r '.mode' changeset/pre.json)
+              if [[ "$mode" == "pre" ]]; then
+                echo "Pre-release mode detected. Exiting pre mode."
+                npx changeset pre exit  # Exiting pre mode
+              else
+                echo "Not in pre-release mode. No action needed."
+              fi
+            else
+              echo "pre.json not found. No action needed."
+            fi
+          elif [[ "${{ github.event.inputs.branch }}" == "beta" ]]; then
+            # For beta branch: Check if not in pre mode and report an error
+            if [ -f "changeset/pre.json" ]; then
+              mode=$(jq -r '.mode' changeset/pre.json)
+              if [[ "$mode" != "pre" ]]; then
+                echo "Error: Not in pre mode on beta branch. Exiting."
+                exit 1
+              else
+                echo "In pre mode on beta branch. Proceeding."
+              fi
+            else
+              echo "Error: pre.json not found. Exiting."
+              exit 1
+            fi
+          else
+            echo "Invalid branch specified. Please choose 'master' or 'beta'."
+            exit 1
+          fi
+
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: yarn release
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Send a Slack notification if a publish happens
-        if: steps.changesets.outputs.published == 'true'
-        # You can do something when a publish happens.
-        run: my-slack-bot send-notification --message "A new version of ${GITHUB_REPOSITORY} was published!"
