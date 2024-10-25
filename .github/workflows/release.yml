@@ -69,6 +69,17 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
+          version: |
+            # Run the check and versioning logic
+            if [[ "${{ github.ref_name }}" == "master" ]]; then
+              if [ -f ".changeset/pre.json" ]; then
+                mode=$(jq -r '.mode' .changeset/pre.json)
+                if [[ "$mode" == "pre" ]]; then
+                  npx changeset pre exit
+                fi
+              fi
+            fi
+            npx changeset version
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
