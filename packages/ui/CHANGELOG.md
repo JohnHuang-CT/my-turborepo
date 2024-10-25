@@ -1,5 +1,11 @@
 # @weber-jojo/ui
 
+## 0.1.1-beta.0
+
+### Patch Changes
+
+- 3491776: asdasd
+
 ## 0.1.0
 
 ### Minor Changes
