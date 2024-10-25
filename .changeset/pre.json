@@ -8,6 +8,7 @@
     "@weber-jojo/ui": "0.0.0"
   },
   "changesets": [
+    "itchy-lamps-refuse",
     "khaki-worms-explode"
   ]
 }
