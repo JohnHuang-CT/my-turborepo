@@ -46,10 +46,6 @@ jobs:
               echo "Error: pre.json not found. Exiting."
               exit 1
             fi
-          else
-            echo "Invalid branch specified. Please choose 'master' or 'beta'."
-            exit 1
-          fi
 
 
       - name: Create Release Pull Request or Publish to npm
