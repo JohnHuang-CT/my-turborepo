@@ -46,7 +46,7 @@ jobs:
               echo "Error: pre.json not found. Exiting."
               exit 1
             fi
-
+          fi
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
