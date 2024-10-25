@@ -2,10 +2,6 @@ name: Release
 
 on:
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to deploy'
-        required: true  # This allows manual triggering of the workflow
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -33,7 +29,7 @@ jobs:
       - name: Check for Pre.json
         id: check-pre
         run: |
-          if [[ "${{ github.event.inputs.branch }}" == "master" ]]; then
+          if [[ "${{ github.ref_name }}" == "master" ]]; then
             # For master branch: Check pre.json and exit pre mode if necessary
             if [ -f "changeset/pre.json" ]; then
               mode=$(jq -r '.mode' changeset/pre.json)
@@ -46,7 +42,7 @@ jobs:
             else
               echo "pre.json not found. No action needed."
             fi
-          elif [[ "${{ github.event.inputs.branch }}" == "beta" ]]; then
+          elif [[ "${{ github.ref_name }}" == "beta" ]]; then
             # For beta branch: Check if not in pre mode and report an error
             if [ -f "changeset/pre.json" ]; then
               mode=$(jq -r '.mode' changeset/pre.json)
