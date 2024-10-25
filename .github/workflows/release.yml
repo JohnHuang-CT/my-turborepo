@@ -29,12 +29,40 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Check for Pre.json
+        id: check-pre
+        run: |
+          if [[ "${{ github.ref_name }}" == "beta" ]]; then
+            # For beta branch: Check if not in pre mode and report an error
+            if [ -f ".changeset/pre.json" ]; then
+              mode=$(jq -r '.mode' .changeset/pre.json)
+              if [[ "$mode" != "pre" ]]; then
+                echo "Error: Not in pre mode on beta branch. Exiting."
+                exit 1
+              else
+                echo "In pre mode on beta branch. Proceeding."
+              fi
+            else
+              echo "Error: pre.json not found. Exiting."
+              exit 1
+            fi
+          else
+            echo "Invalid branch specified. Please choose 'master' or 'beta'."
+            exit 1
+          fi
+
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
           version: |
-            npx changeset pre exit || echo "pre exit failed, but continuing."
+            if [[ "${{ github.ref_name }}" == "master" ]]; then
+              npx changeset pre exit || echo "pre exit failed, but continuing."
+            else
+              echo "cccc"
+            fi
+
             npx changeset version
           publish: pnpm release
         env:
