@@ -32,20 +32,7 @@ jobs:
       - name: Check for Pre.json
         id: check-pre
         run: |
-          if [[ "${{ github.ref_name }}" == "master" ]]; then
-            # For master branch: Check pre.json and exit pre mode if necessary
-            if [ -f ".changeset/pre.json" ]; then
-              mode=$(jq -r '.mode' .changeset/pre.json)
-              if [[ "$mode" == "pre" ]]; then
-                echo "Pre-release mode detected. Exiting pre mode."
-                npx changeset pre exit  # Exiting pre mode
-              else
-                echo "Not in pre-release mode. No action needed."
-              fi
-            else
-              echo "pre.json not found. No action needed."
-            fi
-          elif [[ "${{ github.ref_name }}" == "beta" ]]; then
+          if [[ "${{ github.ref_name }}" == "beta" ]]; then
             # For beta branch: Check if not in pre mode and report an error
             if [ -f ".changeset/pre.json" ]; then
               mode=$(jq -r '.mode' .changeset/pre.json)
@@ -70,15 +57,7 @@ jobs:
         uses: changesets/action@v1
         with:
           version: |
-            # Run the check and versioning logic
-            if [[ "${{ github.ref_name }}" == "master" ]]; then
-              if [ -f ".changeset/pre.json" ]; then
-                mode=$(jq -r '.mode' .changeset/pre.json)
-                if [[ "$mode" == "pre" ]]; then
-                  npx changeset pre exit
-                fi
-              fi
-            fi
+            npx changeset pre exit || echo "pre exit failed, but continuing."
             npx changeset version
           publish: pnpm release
         env:
