@@ -1,0 +1,13 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "docs": "0.0.0",
+    "@weber-jojo/eslint-config": "0.0.0",
+    "@weber-jojo/typescript-config": "0.0.0",
+    "@weber-jojo/ui": "0.0.0"
+  },
+  "changesets": [
+    "khaki-worms-explode"
+  ]
+}
