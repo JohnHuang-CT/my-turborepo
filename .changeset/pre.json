@@ -7,5 +7,7 @@
     "@weber-jojo/typescript-config": "0.0.0",
     "@weber-jojo/ui": "0.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "khaki-worms-explode"
+  ]
 }
