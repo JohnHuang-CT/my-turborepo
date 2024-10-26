@@ -32,7 +32,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          version: npx changeset pre exit & npx changeset version
+          version: npx changeset version
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
