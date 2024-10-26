@@ -1,5 +1,11 @@
 # @weber-jojo/ui
 
+## 1.0.0-beta.1
+
+### Major Changes
+
+- e14db9c: test maii
+
 ## 0.1.1-beta.0
 
 ### Patch Changes
