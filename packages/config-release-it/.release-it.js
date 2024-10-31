@@ -4,7 +4,9 @@ const scope = packageName.split("/")[1];
 
 module.exports = {
   plugins: {
-    "release-it-pnpm": {},
+    "release-it-pnpm": {
+      disableRelease: true,
+    },
 
     // https://github.com/release-it/keep-a-changelog
     "@release-it/keep-a-changelog": {
