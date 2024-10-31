@@ -6,15 +6,13 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "turbo run build --filter=docs^... && changeset publish"
+    "release": "turbo run build --filter=docs^... && turbo release --concurrency=1"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
     "prettier": "^3.2.5",
+    "release-it": "17.10.0",
     "turbo": "^2.2.3"
   },
-"packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@9.0.6",
   "name": "design-system"
 }

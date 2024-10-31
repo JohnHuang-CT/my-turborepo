@@ -1,40 +1,13 @@
-# @weber-jojo/ui
+# Changelog
 
-## 1.0.0
+这个项目的所有重要变更都会被详细记录在这个文件中。
 
-### Major Changes
+这个格式是基于 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
-- e14db9c: test maii
+并且这个项目遵循 [semver version](https://semver.org/spec/v2.0.0.html)。
 
-### Patch Changes
+## [Unreleased]
 
-- 3491776: asdasdaa
+### [Added]
 
-## 0.1.1-beta.0
-
-### Patch Changes
-
-- 3491776: asdasd
-
-## 0.1.0
-
-### Minor Changes
-
-- da27121: test-0hahah
-
-### Patch Changes
-
-- 222feed: zheshi asdasfffasdasdfff
-- 858b489: test 020202
-
-## 0.1.0-beta.1
-
-### Patch Changes
-
-- 858b489: test 020202
-
-## 0.1.0-beta.0
-
-### Minor Changes
-
-- da27121: test-0hahah
+- test

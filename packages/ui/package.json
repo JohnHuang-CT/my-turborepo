@@ -14,7 +14,8 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "release": "release-it --ci --increment=minor"
   },
   "devDependencies": {
     "@weber-jojo/eslint-config": "workspace:*",
@@ -23,7 +24,8 @@
     "eslint": "^8.57.0",
     "@weber-jojo/typescript-config": "workspace:*",
     "tsup": "^8.0.2",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "@weber-jojo/config-release-it": "workspace:*"
   },
   "dependencies": {
     "react": "^18.2.0"

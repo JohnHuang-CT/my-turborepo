@@ -1,0 +1,11 @@
+{
+  "name": "@weber-jojo/config-release-it",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": "true",
+  "main": ".release-it.js",
+  "dependencies": {
+    "@release-it/keep-a-changelog": "5.0.0",
+    "release-it-pnpm": "^4.6.3"
+  }
+}
