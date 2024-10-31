@@ -4,14 +4,12 @@ const scope = packageName.split("/")[1];
 
 module.exports = {
   plugins: {
-    "release-it-pnpm": {},
+    "release-it-pnpm": {
+      disableRelease: true,
+    },
 
     // https://github.com/release-it/keep-a-changelog
-    "@release-it/keep-a-changelog": {
-      filename: "CHANGELOG.md",
-      addUnreleased: true,
-      keepUnreleased: true,
-    },
+    "@release-it/keep-a-changelog": {},
   },
   // https://github.com/release-it/release-it/blob/main/docs/git.md
   git: {
@@ -25,8 +23,8 @@ module.exports = {
   },
 
   // https://github.com/release-it/release-it/blob/main/docs/github-releases.md
-  github: {
-    release: true,
-    releaseName: `${packageName}-v${version}`,
-  },
+  // github: {
+  //   release: true,
+  //   releaseName: `${packageName}-v${version}`,
+  // },
 };
