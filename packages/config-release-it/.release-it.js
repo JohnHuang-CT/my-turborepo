@@ -11,6 +11,8 @@ module.exports = {
     // https://github.com/release-it/keep-a-changelog
     "@release-it/keep-a-changelog": {
       filename: "CHANGELOG.md",
+      strictLatest: false,
+      addUnreleased: true,
     },
   },
   // https://github.com/release-it/release-it/blob/main/docs/git.md
