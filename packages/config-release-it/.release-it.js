@@ -13,11 +13,7 @@ module.exports = {
       filename: "CHANGELOG.md",
       strictLatest: false,
       addUnreleased: true,
-    },
-
-    "@release-it/bumper": {
-      in: "composer.json",
-      out: "composer.json",
+      keepUnreleased: true,
     },
   },
   // https://github.com/release-it/release-it/blob/main/docs/git.md
@@ -27,8 +23,9 @@ module.exports = {
     pushRepo: "git@github.com:JohnHuang-CT/my-turborepo.git",
     commitsPath: ".",
     commitMessage: `feat(${scope}): released version v${version} [no ci]`,
-    requireCommits: true,
+    requireCommits: false,
     requireCommitsFail: false,
+    requireCleanWorkingDir: false,
   },
 
   // https://github.com/release-it/release-it/blob/main/docs/github-releases.md
