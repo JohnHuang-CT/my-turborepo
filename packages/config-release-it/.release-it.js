@@ -13,7 +13,6 @@ module.exports = {
       filename: "CHANGELOG.md",
       strictLatest: false,
       addUnreleased: true,
-      keepUnreleased: true,
     },
   },
   // https://github.com/release-it/release-it/blob/main/docs/git.md
