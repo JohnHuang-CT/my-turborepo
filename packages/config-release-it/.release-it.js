@@ -18,7 +18,7 @@ module.exports = {
   // https://github.com/release-it/release-it/blob/main/docs/git.md
   git: {
     push: true,
-    tagName: `${packageName}-v${version}`,
+    tagName: `${packageName}@${version}`,
     pushRepo: "git@github.com:JohnHuang-CT/my-turborepo.git",
     commitsPath: ".",
     commitMessage: `feat(${scope}): released version v${version} [no ci]`,
