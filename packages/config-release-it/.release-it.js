@@ -4,6 +4,10 @@ const scope = packageName.split("/")[1];
 
 module.exports = {
   plugins: {
+    "@release-it/bumper": {
+      in: "composer.json",
+      out: "composer.json",
+    },
     "release-it-pnpm": {
       disableRelease: true,
     },
@@ -13,11 +17,6 @@ module.exports = {
       filename: "CHANGELOG.md",
       strictLatest: false,
       addUnreleased: true,
-    },
-
-    "@release-it/bumper": {
-      in: "composer.json",
-      out: "composer.json",
     },
   },
   // https://github.com/release-it/release-it/blob/main/docs/git.md
