@@ -7,6 +7,10 @@ module.exports = {
     "release-it-pnpm": {
       disableRelease: true,
     },
+    "@release-it/bumper": {
+      in: "composer.json",
+      out: "composer.json",
+    },
 
     // https://github.com/release-it/keep-a-changelog
     "@release-it/keep-a-changelog": {
