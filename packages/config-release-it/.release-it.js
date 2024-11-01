@@ -14,6 +14,11 @@ module.exports = {
       strictLatest: false,
       addUnreleased: true,
     },
+
+    "@release-it/bumper": {
+      in: "composer.json",
+      out: "composer.json",
+    },
   },
   // https://github.com/release-it/release-it/blob/main/docs/git.md
   git: {
