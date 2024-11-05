@@ -18,6 +18,9 @@
     },
     "release": {
       "dependsOn": ["^release"]
+    },
+    "release:beta": {
+      "dependsOn": ["^release:beta"]
     }
   }
 }
