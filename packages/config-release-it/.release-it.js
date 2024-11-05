@@ -24,7 +24,7 @@ module.exports = {
     commitMessage: `feat(${scope}): released version v${version} [no ci]`,
     requireCommits: true,
     requireCommitsFail: false,
-    // requireCleanWorkingDir: false,
+    requireCleanWorkingDir: false,
   },
 
   // https://github.com/release-it/release-it/blob/main/docs/github-releases.md
