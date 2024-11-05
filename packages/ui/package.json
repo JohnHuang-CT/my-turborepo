@@ -15,7 +15,7 @@
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "release": "release-it --ci"
+    "release": "node ../../scripts/release.mjs --ci"
   },
   "devDependencies": {
     "@weber-jojo/eslint-config": "workspace:*",
