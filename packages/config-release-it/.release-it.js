@@ -4,10 +4,6 @@ const scope = packageName.split("/")[1];
 
 module.exports = {
   plugins: {
-    "@release-it/bumper": {
-      in: "composer.json",
-      out: "composer.json",
-    },
     "release-it-pnpm": {
       disableRelease: true,
     },
@@ -28,6 +24,7 @@ module.exports = {
     commitMessage: `feat(${scope}): released version v${version} [no ci]`,
     requireCommits: true,
     requireCommitsFail: false,
+    requireCleanWorkingDir: false,
   },
 
   // https://github.com/release-it/release-it/blob/main/docs/github-releases.md
