@@ -1,6 +1,6 @@
 {
   "name": "@weber-jojo/release-it-keep-a-changelog",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Keep-a-changelog plugin for release-it",
   "type": "module",
   "main": "./index.js",
