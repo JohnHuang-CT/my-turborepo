@@ -5,9 +5,6 @@
     "release-its": "bin.mjs"
   },
   "main": ".release-it.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -16,6 +13,9 @@
     "release-it": "17.10.0",
     "@@weber-jojo/release-it-pnpm": "workspace:*",
     "@@weber-jojo/release-it-keep-a-changelog": "workspace:*"
+  },
+  "scripts": {
+    "release": "release-its --ci"
   },
   "publishConfig": {
     "access": "public"

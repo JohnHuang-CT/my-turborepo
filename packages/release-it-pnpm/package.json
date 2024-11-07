@@ -15,6 +15,9 @@
   "peerDependencies": {
     "release-it": "^17.0.0"
   },
+  "scripts": {
+    "release": "release-its --ci"
+  },
   "dependencies": {
     "bumpp": "^9.4.1",
     "changelogithub": "^0.13.9",
