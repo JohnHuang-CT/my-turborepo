@@ -5,9 +5,7 @@
   "type": "module",
   "main": "./index.js",
   "private": true,
-  "scripts": {
-    "release": "release-its --ci"
-  },
+  "scripts": {},
   "license": "MIT",
   "dependencies": {
     "detect-newline": "^4.0.1",
