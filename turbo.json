@@ -1,11 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
-    "build": {
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["dist/**", "storybook-static/**"],
-      "dependsOn": ["^build"]
-    },
     "lint": {
       "dependsOn": ["^lint"]
     },
@@ -18,9 +13,6 @@
     },
     "release": {
       "dependsOn": ["^release"]
-    },
-    "release:beta": {
-      "dependsOn": ["^release:beta"]
     }
   }
 }

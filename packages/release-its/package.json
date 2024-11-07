@@ -1,7 +1,6 @@
 {
   "name": "@weber/release-its",
   "version": "0.0.0",
-  "private": true,
   "bin": {
     "release-its": "bin.mjs"
   },
@@ -17,5 +16,8 @@
     "release-it": "17.10.0",
     "@weber/release-it-pnpm": "workspace:*",
     "@weber/release-it-keep-a-changelog": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

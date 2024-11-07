@@ -5,7 +5,7 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "release": "turbo build && turbo release"
+    "release": "turbo release"
   },
   "devDependencies": {
     "prettier": "^3.2.5",

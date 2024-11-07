@@ -22,5 +22,8 @@
     "conventional-recommended-bump": "^10.0.0",
     "kolorist": "^1.8.0",
     "semver": "^7.6.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
