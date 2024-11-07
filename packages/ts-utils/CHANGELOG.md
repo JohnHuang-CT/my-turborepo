@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- asas
+
+## [0.0.8] - 2024-11-07
+
+### Added
+
 - ssssssssgfgg
 
 ## [0.0.8-beta.0] - 2024-11-05
