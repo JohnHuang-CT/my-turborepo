@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1] - 2024-11-07
+
 ### Added
 
 - 基于`release-it`，增加对changelog content的守卫
