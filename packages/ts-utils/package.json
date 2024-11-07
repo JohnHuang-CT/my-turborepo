@@ -1,6 +1,6 @@
 {
   "name": "@weber-jojo/ts-utils",
-  "version": "0.0.8",
+  "version": "0.0.0-snapshot-20241107090848",
   "sideEffects": false,
   "license": "MIT",
   "exports": {
