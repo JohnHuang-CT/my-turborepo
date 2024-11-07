@@ -8,7 +8,7 @@ importers:
 
   .:
     devDependencies:
-      '@weber/release-its':
+      '@weber-jojo/release-its':
         specifier: workspace:*
         version: link:packages/release-its
       prettier:
@@ -56,10 +56,10 @@ importers:
 
   packages/release-its:
     dependencies:
-      '@weber/release-it-keep-a-changelog':
+      '@weber-jojo/release-it-keep-a-changelog':
         specifier: workspace:*
         version: link:../release-it-keep-a-changelog
-      '@weber/release-it-pnpm':
+      '@weber-jojo/release-it-pnpm':
         specifier: workspace:*
         version: link:../release-it-pnpm
       release-it:
