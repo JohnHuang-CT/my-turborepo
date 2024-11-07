@@ -1,0 +1,26 @@
+{
+  "name": "@weber/release-it-pnpm",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "./index.js",
+  "files": [
+    "index.js",
+    "package.json",
+    "CHANGELOG.md"
+  ],
+  "peerDependencies": {
+    "release-it": "^17.0.0"
+  },
+  "dependencies": {
+    "bumpp": "^9.4.1",
+    "changelogithub": "^0.13.9",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "conventional-recommended-bump": "^10.0.0",
+    "kolorist": "^1.8.0",
+    "semver": "^7.6.3"
+  }
+}

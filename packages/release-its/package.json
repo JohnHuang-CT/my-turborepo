@@ -15,7 +15,7 @@
   "description": "",
   "dependencies": {
     "release-it": "17.10.0",
-    "@release-it/keep-a-changelog": "5.0.0",
-    "release-it-pnpm": "^4.6.3"
+    "@weber/release-it-pnpm": "workspace:*",
+    "@weber/release-it-keep-a-changelog": "workspace:*"
   }
 }

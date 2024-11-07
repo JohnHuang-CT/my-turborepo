@@ -5,6 +5,7 @@ import fs from "fs";
 import path from "path";
 
 const changelogPath = path.resolve(process.cwd(), "CHANGELOG.md");
+const args = process.argv.slice(2);
 
 const getSectionContent = (sectionTitle) => {
   try {
@@ -38,13 +39,13 @@ const getSectionContent = (sectionTitle) => {
 
 // 检查是否存在非空内容
 const isChangelogNonEmpty = () => {
+  if (args.includes("--snapshot")) return true;
   const content = getSectionContent("Unreleased");
   return content !== null && content.length > 0;
 };
 
 // 如果 CHANGELOG.md 有内容，执行 release-it
 if (isChangelogNonEmpty()) {
-  const args = process.argv.slice(2);
   const releaseProcess = spawn("npx", ["release-it", ...args], {
     stdio: "inherit",
   });

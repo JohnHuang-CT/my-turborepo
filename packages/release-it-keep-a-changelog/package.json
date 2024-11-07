@@ -1,0 +1,22 @@
+{
+  "name": "@weber/release-it-keep-a-changelog",
+  "version": "0.0.0",
+  "description": "Keep-a-changelog plugin for release-it",
+  "type": "module",
+  "main": "./index.js",
+  "scripts": {
+    "release": "release-its --ci"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "detect-newline": "^4.0.1",
+    "string-template": "^1.0.0"
+  },
+  "devDependencies": {},
+  "peerDependencies": {
+    "release-it": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
