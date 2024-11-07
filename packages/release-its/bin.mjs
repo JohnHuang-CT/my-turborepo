@@ -6,12 +6,11 @@ import path from "path";
 
 const changelogPath = path.resolve(process.cwd(), "CHANGELOG.md");
 
-// 获取指定标题下的内容
 const getSectionContent = (sectionTitle) => {
   try {
     const content = fs.readFileSync(changelogPath, "utf-8");
     const sectionHeader = `## [${sectionTitle}]`;
-    const nextHeader = "## ["; // 用于寻找下一个 section 的开始位置
+    const nextHeader = "## [";
 
     const startIndex = content.indexOf(sectionHeader);
     if (startIndex === -1) {

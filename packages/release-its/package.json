@@ -1,0 +1,21 @@
+{
+  "name": "@weber/release-its",
+  "version": "0.0.0",
+  "private": true,
+  "bin": {
+    "release-its": "bin.mjs"
+  },
+  "main": ".release-it.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "release-it": "17.10.0",
+    "@release-it/keep-a-changelog": "5.0.0",
+    "release-it-pnpm": "^4.6.3"
+  }
+}

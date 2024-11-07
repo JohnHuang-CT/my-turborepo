@@ -1,1 +1,1 @@
-module.exports = require('@weber-jojo/config-release-it');
+module.exports = require("@weber/release-its");

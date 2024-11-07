@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "prettier": "^3.2.5",
-    "release-it": "17.10.0",
-    "turbo": "^2.2.3"
+    "turbo": "^2.2.3",
+    "@weber/release-its": "workspace:*"
   },
   "packageManager": "pnpm@9.0.6",
   "name": "design-system"
