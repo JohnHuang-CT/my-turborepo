@@ -4,12 +4,12 @@ const scope = packageName.split("/")[1];
 
 module.exports = {
   plugins: {
-    "../release-it-pnpm/index.js": {
+    "@weber-jojo/release-it-pnpm": {
       disableRelease: true,
     },
 
     // https://github.com/release-it/keep-a-changelog
-    "../release-it-keep-a-changelog/index.js": {
+    "@weber-jojo/release-it-keep-a-changelog": {
       filename: "CHANGELOG.md",
       strictLatest: false,
       addUnreleased: true,

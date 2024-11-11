@@ -3,7 +3,6 @@
   "type": "module",
   "version": "0.0.0",
   "description": "",
-  "private": true,
   "author": "",
   "license": "MIT",
   "sideEffects": false,
@@ -11,7 +10,8 @@
   "files": [
     "index.js",
     "package.json",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "README.md"
   ],
   "peerDependencies": {
     "release-it": "^17.0.0"

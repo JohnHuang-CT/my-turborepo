@@ -4,16 +4,16 @@
   "bin": {
     "release-its": "bin.mjs"
   },
-  "main": ".release-it.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "release-it": "17.10.0",
-    "@weber-jojo/release-it-pnpm": "workspace:*",
-    "@weber-jojo/release-it-keep-a-changelog": "workspace:*"
+    "release-it": "^17.10.0"
   },
+  "files": [
+    "bin.mjs"
+  ],
   "scripts": {
     "release": "release-its --ci"
   },

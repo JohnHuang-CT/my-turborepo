@@ -4,7 +4,6 @@
   "description": "Keep-a-changelog plugin for release-it",
   "type": "module",
   "main": "./index.js",
-  "private": true,
   "scripts": {},
   "license": "MIT",
   "dependencies": {

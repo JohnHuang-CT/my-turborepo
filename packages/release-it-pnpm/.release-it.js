@@ -9,7 +9,7 @@ module.exports = {
     },
 
     // https://github.com/release-it/keep-a-changelog
-    "../release-it-keep-a-changelog/index.js": {
+    "./index.js": {
       filename: "CHANGELOG.md",
       strictLatest: false,
       addUnreleased: true,
