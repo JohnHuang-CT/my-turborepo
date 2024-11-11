@@ -1,10 +1,10 @@
-import { Plugin } from 'release-it';
-import fs from 'fs';
-import path from 'path';
-import { detectNewline } from 'detect-newline';
-import format from 'string-template';
+import { Plugin } from "release-it";
+import fs from "fs";
+import path from "path";
+import { detectNewline } from "detect-newline";
+import format from "string-template";
 
-const pad = num => ('0' + num).slice(-2);
+const pad = (num) => ("0" + num).slice(-2);
 
 const getFormattedDate = () => {
   const today = new Date();
@@ -19,36 +19,54 @@ const getFormattedDate = () => {
  * https://github.com/release-it/release-it/releases/tag/1.0.0
  */
 const defaultVersionUrlFormats = {
-  repositoryUrl: 'https://{host}/{repository}',
-  unreleasedUrl: '{repositoryUrl}/compare/{tagName}...{head}',
-  versionUrl: '{repositoryUrl}/compare/{previousTag}...{tagName}',
-  firstVersionUrl: '{repositoryUrl}/releases/tag/{tagName}'
+  repositoryUrl: "https://{host}/{repository}",
+  unreleasedUrl: "{repositoryUrl}/compare/{tagName}...{head}",
+  versionUrl: "{repositoryUrl}/compare/{previousTag}...{tagName}",
+  firstVersionUrl: "{repositoryUrl}/releases/tag/{tagName}",
 };
 
 class KeepAChangelog extends Plugin {
   async init() {
-    await super.init();
-    const { filename, strictLatest, addUnreleased, keepUnreleased, addVersionUrl, versionUrlFormats, head } = this.options;
+    console.log("init KeepAChangelog", this.options);
 
-    this.filename = filename || 'CHANGELOG.md';
-    this.strictLatest = strictLatest === undefined ? true : Boolean(strictLatest);
-    this.addUnreleased = addUnreleased === undefined ? false : Boolean(addUnreleased);
-    this.keepUnreleased = keepUnreleased === undefined ? false : Boolean(keepUnreleased);
-    this.addVersionUrl = addVersionUrl === undefined ? false : Boolean(addVersionUrl);
+    await super.init();
+    const {
+      filename,
+      strictLatest,
+      addUnreleased,
+      keepUnreleased,
+      addVersionUrl,
+      versionUrlFormats,
+      head,
+    } = this.options;
+
+    this.filename = filename || "CHANGELOG.md";
+    this.strictLatest =
+      strictLatest === undefined ? true : Boolean(strictLatest);
+    this.addUnreleased =
+      addUnreleased === undefined ? false : Boolean(addUnreleased);
+    this.keepUnreleased =
+      keepUnreleased === undefined ? false : Boolean(keepUnreleased);
+    this.addVersionUrl =
+      addVersionUrl === undefined ? false : Boolean(addVersionUrl);
     this.versionUrlFormats = versionUrlFormats
       ? { ...defaultVersionUrlFormats, ...versionUrlFormats }
       : defaultVersionUrlFormats;
-    this.head = head || 'HEAD';
+    this.head = head || "HEAD";
 
     this.changelogPath = path.resolve(this.filename);
-    this.changelogContent = fs.readFileSync(this.changelogPath, 'utf-8');
+    this.changelogContent = fs.readFileSync(this.changelogPath, "utf-8");
     this.EOL = detectNewline(this.changelogContent);
-    this.unreleasedTitleRaw = 'Unreleased';
+    this.unreleasedTitleRaw = "Unreleased";
     this.unreleasedTitle = `## [${this.unreleasedTitleRaw}]`;
 
-    const hasUnreleasedSection = this.changelogContent.includes(this.unreleasedTitle);
+    const hasUnreleasedSection = this.changelogContent.includes(
+      this.unreleasedTitle
+    );
     if (!hasUnreleasedSection) {
-      throw Error(`Missing "${this.unreleasedTitleRaw}" section in ${filename}.`);
+      throw Error(
+        `Missing "${this.unreleasedTitleRaw}" section in ${filename}.`
+      );
     }
   }
 
@@ -57,10 +75,15 @@ class KeepAChangelog extends Plugin {
     if (changelog) return changelog;
 
     const { filename, strictLatest } = this;
-    const previousReleaseTitle = strictLatest ? `## [${latestVersion}]` : `## [`;
-    const hasPreviousReleaseSection = this.changelogContent.includes(previousReleaseTitle);
+    const previousReleaseTitle = strictLatest
+      ? `## [${latestVersion}]`
+      : `## [`;
+    const hasPreviousReleaseSection =
+      this.changelogContent.includes(previousReleaseTitle);
     if (strictLatest && !hasPreviousReleaseSection) {
-      throw Error(`Missing section for previous release ("${latestVersion}") in ${filename}.`);
+      throw Error(
+        `Missing section for previous release ("${latestVersion}") in ${filename}.`
+      );
     }
 
     const { isIncrement } = this.config;
@@ -80,16 +103,26 @@ class KeepAChangelog extends Plugin {
     const indexOfReleaseTitle = changelogContent.indexOf(releaseTitleMarkdown);
 
     if (indexOfReleaseTitle === -1) {
-      throw Error(`Missing section for previous release ("${releaseTitleRaw}") in ${filename}.`);
+      throw Error(
+        `Missing section for previous release ("${releaseTitleRaw}") in ${filename}.`
+      );
     }
 
-    const entryContentStartIndex = changelogContent.indexOf(EOL, indexOfReleaseTitle);
-    let entryContentEndIndex = changelogContent.indexOf(previousReleaseTitle, entryContentStartIndex);
+    const entryContentStartIndex = changelogContent.indexOf(
+      EOL,
+      indexOfReleaseTitle
+    );
+    let entryContentEndIndex = changelogContent.indexOf(
+      previousReleaseTitle,
+      entryContentStartIndex
+    );
     if (entryContentEndIndex === -1) {
       entryContentEndIndex = changelogContent.length;
     }
 
-    const changelogEntryContent = changelogContent.substring(entryContentStartIndex, entryContentEndIndex).trim();
+    const changelogEntryContent = changelogContent
+      .substring(entryContentStartIndex, entryContentEndIndex)
+      .trim();
     if (!changelogEntryContent) {
       // throw Error(`There are no entries under "${releaseTitleRaw}" section in ${filename}.`);
     }
@@ -98,9 +131,8 @@ class KeepAChangelog extends Plugin {
   }
 
   getInitialOptions(options, pluginName) {
-
     return Object.assign({}, options[pluginName], {
-      snapshot: options.snapshot || false
+      snapshot: options.snapshot || false,
     });
   }
 
@@ -109,34 +141,55 @@ class KeepAChangelog extends Plugin {
   }
 
   addVersionUrls(changelog) {
-    const { version, latestVersion, tagName, latestTag, repo } = this.config.getContext();
+    const { version, latestVersion, tagName, latestTag, repo } =
+      this.config.getContext();
     let updatedChangelog = changelog;
 
     const repositoryUrl = format(this.versionUrlFormats.repositoryUrl, repo);
-    const unreleasedLinkRegex = new RegExp(`\\[unreleased\\]\\:.*${this.head}`, 'i');
+    const unreleasedLinkRegex = new RegExp(
+      `\\[unreleased\\]\\:.*${this.head}`,
+      "i"
+    );
 
     // Add or update the Unreleased link
-    const unreleasedUrl = format(this.versionUrlFormats.unreleasedUrl, { repositoryUrl, tagName, head: this.head });
+    const unreleasedUrl = format(this.versionUrlFormats.unreleasedUrl, {
+      repositoryUrl,
+      tagName,
+      head: this.head,
+    });
     const unreleasedLink = `[unreleased]: ${unreleasedUrl}`;
     if (unreleasedLinkRegex.test(updatedChangelog)) {
-      updatedChangelog = updatedChangelog.replace(unreleasedLinkRegex, unreleasedLink);
+      updatedChangelog = updatedChangelog.replace(
+        unreleasedLinkRegex,
+        unreleasedLink
+      );
     } else {
       updatedChangelog = `${updatedChangelog}${this.EOL}${unreleasedLink}`;
     }
 
     // Add a link for the first tagged version
-    if (!latestTag || latestTag === '0.0.0') {
-      const firstVersionUrl = format(this.versionUrlFormats.firstVersionUrl, { repositoryUrl, tagName });
+    if (!latestTag || latestTag === "0.0.0") {
+      const firstVersionUrl = format(this.versionUrlFormats.firstVersionUrl, {
+        repositoryUrl,
+        tagName,
+      });
       const firstVersionLink = `[${version}]: ${firstVersionUrl}`;
       return `${updatedChangelog}${this.EOL}${firstVersionLink}`;
     }
 
     // Add a link for the new version
     const latestVersionLink = `[${latestVersion}]:`;
-    const versionUrl = format(this.versionUrlFormats.versionUrl, { repositoryUrl, previousTag: latestTag, tagName });
+    const versionUrl = format(this.versionUrlFormats.versionUrl, {
+      repositoryUrl,
+      previousTag: latestTag,
+      tagName,
+    });
     const versionLink = `[${version}]: ${versionUrl}`;
     if (updatedChangelog.includes(latestVersionLink)) {
-      return updatedChangelog.replace(latestVersionLink, `${versionLink}${this.EOL}${latestVersionLink}`);
+      return updatedChangelog.replace(
+        latestVersionLink,
+        `${versionLink}${this.EOL}${latestVersionLink}`
+      );
     } else {
       return `${updatedChangelog}${this.EOL}${versionLink}`;
     }
@@ -148,9 +201,14 @@ class KeepAChangelog extends Plugin {
     if (isDryRun || keepUnreleased || !isIncrement) return;
     const { version } = this.getContext();
     const formattedDate = getFormattedDate();
-    const unreleasedTitle = addUnreleased ? this.unreleasedTitle + this.EOL + this.EOL : '';
+    const unreleasedTitle = addUnreleased
+      ? this.unreleasedTitle + this.EOL + this.EOL
+      : "";
     const releaseTitle = `${unreleasedTitle}## [${version}] - ${formattedDate}`;
-    let changelog = this.changelogContent.replace(this.unreleasedTitle, releaseTitle);
+    let changelog = this.changelogContent.replace(
+      this.unreleasedTitle,
+      releaseTitle
+    );
 
     if (addVersionUrl) {
       changelog = this.addVersionUrls(changelog);

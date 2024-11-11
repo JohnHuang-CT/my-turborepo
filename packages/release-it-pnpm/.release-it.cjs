@@ -4,12 +4,12 @@ const scope = packageName.split("/")[1];
 
 module.exports = {
   plugins: {
-    "../release-it-pnpm/index.js": {
+    "./index.js": {
       disableRelease: true,
     },
 
     // https://github.com/release-it/keep-a-changelog
-    "./index.js": {
+    "../release-it-keep-a-changelog/index.js": {
       filename: "CHANGELOG.md",
       strictLatest: false,
       addUnreleased: true,
