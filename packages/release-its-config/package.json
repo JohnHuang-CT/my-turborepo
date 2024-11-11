@@ -15,8 +15,8 @@
     "@weber-jojo/release-it-keep-a-changelog": "workspace:*"
   },
   "scripts": {
-    "release": "release-its --ci",
-    "release:local": "release-its --ci --snapshot"
+    "release": "release-it --ci",
+    "release:local": "release-it --ci --snapshot --no-git"
   },
   "publishConfig": {
     "access": "public"

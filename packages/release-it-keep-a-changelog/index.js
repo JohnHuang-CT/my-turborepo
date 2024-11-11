@@ -122,7 +122,13 @@ class KeepAChangelog extends Plugin {
       .substring(entryContentStartIndex, entryContentEndIndex)
       .trim();
     if (!changelogEntryContent) {
-      // throw Error(`There are no entries under "${releaseTitleRaw}" section in ${filename}.`);
+      console.log(
+        'No content in the "Unreleased" section of CHANGELOG.md. Skipping release.'
+      );
+
+      if (!this.options.snapshot) {
+        process.exit(0);
+      }
     }
 
     return changelogEntryContent;
