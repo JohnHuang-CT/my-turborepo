@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1] - 2024-11-11
+
 ### Added
 
 - forked with https://github.com/release-it/keep-a-changelog
