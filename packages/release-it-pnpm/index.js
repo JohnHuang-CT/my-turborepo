@@ -155,8 +155,11 @@ class ReleaseItPnpmPlugin extends Plugin {
         confirm: false,
         recursive: true,
         release: newVersion,
+        files: this.options.snapshot ? ["jsr.json"] : undefined,
       });
+
       if (updatedFiles.length === 0) return;
+
       // Only publish when some packages is not private
       for (const file of updatedFiles) {
         const { private: isPrivate } = JSON.parse(
@@ -167,6 +170,7 @@ class ReleaseItPnpmPlugin extends Plugin {
           break;
         }
       }
+
       // Using custom publish command
       if (publishCommand !== defaultPublishCommand) needPublish = true;
     }

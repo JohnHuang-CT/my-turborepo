@@ -196,7 +196,8 @@ class KeepAChangelog extends Plugin {
   beforeRelease() {
     const { addUnreleased, keepUnreleased, addVersionUrl } = this;
     const { isDryRun, isIncrement } = this.config;
-    if (isDryRun || keepUnreleased || !isIncrement) return;
+    if (isDryRun || keepUnreleased || !isIncrement || this.options.snapshot)
+      return;
     const { version } = this.getContext();
     const formattedDate = getFormattedDate();
     const unreleasedTitle = addUnreleased

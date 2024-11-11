@@ -15,7 +15,8 @@
     "bin.mjs"
   ],
   "scripts": {
-    "release": "release-its --ci"
+    "release": "release-its --ci",
+    "release:local": "release-its --ci --snapshot"
   },
   "publishConfig": {
     "access": "public"

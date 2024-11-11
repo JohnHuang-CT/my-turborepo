@@ -4,7 +4,7 @@ const scope = packageName.split("/")[1];
 
 module.exports = {
   plugins: {
-    "../release-it-keep-a-changelog/index.js": {
+    "../release-it-pnpm/index.js": {
       disableRelease: true,
     },
 

@@ -5,7 +5,8 @@
   "type": "module",
   "main": "./index.js",
   "scripts": {
-    "release": "release-its --ci"
+    "release": "release-its --ci",
+    "release:local": "release-its --ci --snapshot"
   },
   "license": "MIT",
   "dependencies": {

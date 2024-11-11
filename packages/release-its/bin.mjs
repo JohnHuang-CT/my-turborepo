@@ -46,9 +46,19 @@ const isChangelogNonEmpty = () => {
 
 // 如果 CHANGELOG.md 有内容，执行 release-it
 if (isChangelogNonEmpty()) {
-  const releaseProcess = spawn("npx", ["release-it", ...args], {
-    stdio: "inherit",
-  });
+  const releaseProcess = spawn(
+    "npx",
+    [
+      "release-it",
+      "--no-git",
+      "--npm.ignoreVersion",
+      "--git-changelog=''",
+      ...args,
+    ],
+    {
+      stdio: "inherit",
+    }
+  );
 
   releaseProcess.on("close", (code) => {
     if (code !== 0) {
