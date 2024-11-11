@@ -1,7 +1,7 @@
 {
   "name": "@weber-jojo/release-it-pnpm",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "author": "",
   "license": "MIT",
@@ -17,8 +17,8 @@
     "release-it": "^17.0.0"
   },
   "scripts": {
-    "release": "release-its --ci",
-    "release:local": "release-its --ci --snapshot"
+    "release": "release-it --ci",
+    "release:local": "release-it --ci --snapshot --no-git"
   },
   "dependencies": {
     "bumpp": "^9.4.1",
