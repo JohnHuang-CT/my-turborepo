@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5] - 2024-11-11
+
 ### Added
 
 - forked with https://github.com/hyoban/release-it-pnpm
