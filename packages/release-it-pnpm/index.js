@@ -43,7 +43,6 @@ class ReleaseItPnpmPlugin extends Plugin {
   constructor(...args) {
     super(...args);
     this.registerPrompts(prompts);
-    console.log("init KeepAChangelog", this.options);
   }
   getInitialOptions(options, pluginName) {
     return Object.assign({}, options[pluginName], {

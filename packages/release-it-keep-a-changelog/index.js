@@ -27,8 +27,6 @@ const defaultVersionUrlFormats = {
 
 class KeepAChangelog extends Plugin {
   async init() {
-    console.log("init KeepAChangelog", this.options);
-
     await super.init();
     const {
       filename,
