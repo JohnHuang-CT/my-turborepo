@@ -155,7 +155,6 @@ class ReleaseItPnpmPlugin extends Plugin {
         confirm: false,
         recursive: true,
         release: newVersion,
-        files: this.options.snapshot ? ["jsr.json"] : undefined,
       });
 
       if (updatedFiles.length === 0) return;
@@ -197,6 +196,9 @@ class ReleaseItPnpmPlugin extends Plugin {
         label: "Publishing packages(s)",
         prompt: "publish",
       });
+      if (this.options.snapshot) {
+        this.exec(`git restore $(find . -name "package.json")`);
+      }
     }
   }
   async writeChangelog(changelog, version) {

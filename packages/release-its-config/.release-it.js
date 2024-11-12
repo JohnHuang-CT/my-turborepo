@@ -18,10 +18,9 @@ module.exports = {
   // https://github.com/release-it/release-it/blob/main/docs/git.md
   git: {
     tagName: `${packageName}@${version}`,
-    commitMessage: `feat(${scope}): released version v${version} [no ci]`,
+    commitMessage: `chore(${scope}): released version v${version} [no ci]`,
     requireCommits: true,
     requireCommitsFail: false,
-    requireCleanWorkingDir: false,
   },
 
   npm: false,
