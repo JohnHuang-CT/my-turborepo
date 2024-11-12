@@ -5,13 +5,13 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "release": "turbo release --concurrency=1",
-    "release:local": "turbo release -- --snapshot --no-git"
+    "prepublishOnly": "[ \"$(npm whoami)\" = \"your-username\" ] || { echo 'Error: Only your-username can publish this package.'; exit 1; }",
+    "publish": "turbo release --concurrency=1",
+    "publish:beta": "pnpm publish -- --preRelease=beta"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
-    "turbo": "^2.2.3",
-    "@weber-jojo/release-its": "workspace:*"
+    "turbo": "^2.2.3"
   },
   "packageManager": "pnpm@9.0.6",
   "name": "design-system"
