@@ -6,8 +6,8 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepublishOnly": "[ \"$(npm whoami)\" = \"your-username\" ] || { echo 'Error: Only your-username can publish this package.'; exit 1; }",
-    "publish": "turbo release --concurrency=1",
-    "publish:beta": "pnpm publish -- --preRelease=beta"
+    "release": "turbo release --concurrency=1",
+    "release:beta": "pnpm run release -- --preRelease=beta"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
